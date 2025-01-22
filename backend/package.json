@@ -4,9 +4,7 @@
   "lockfileVersion": 3,
   "requires": true,
   "scripts": {
-    "start": "node index.js",
-    "start-server": "node index.js",
-    "start-bot": "node bot.js"
+    "start": "node index.js"
   },
   "packages": {
     "": {

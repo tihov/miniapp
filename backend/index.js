@@ -1,16 +1,13 @@
 const express = require('express');
-const axios = require('axios');
-const app = express();
+const { Telegraf } = require('telegraf');
 const path = require('path');
 
-app.use(express.json());
+const app = express();
+const bot = new Telegraf(process.env.BOT_TOKEN);
 
+// Настройка статических файлов
 app.use(express.static(path.join(__dirname, 'public')));
-
-//const BOT_TOKEN = process.env.BOT_TOKEN; // Токен бота из переменных окружения
-//const PORT = process.env.PORT || 3000; // Порт для сервера
-const BOT_TOKEN = process.env.BOT_TOKEN;
-const PORT = 443;
+app.use(express.json());
 
 // Обработчик вебхука от Telegram
 app.post('/webhook', (req, res) => {
@@ -23,22 +20,23 @@ app.post('/webhook', (req, res) => {
     const text = message.text;
 
     console.log(`Получено сообщение: ${text}`);
-
-    // Отправляем ответ
-    axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-        chat_id: chatId,
-        text: `Вы сказали: ${text}`
-    })
-    .then(() => {
-        res.sendStatus(200);
-    })
-    .catch((err) => {
-        console.error('Ошибка при отправке сообщения:', err);
-        res.sendStatus(500);
-    });
+    res.sendStatus(200);
 });
 
-// Старт сервера
+// Обработка данных из Mini App
+bot.on('web_app_data', (ctx) => {
+    const data = ctx.webAppData.data;
+    const parsedData = JSON.parse(data);
+    console.log("Получены данные из Mini App:", parsedData);
+
+    ctx.reply(`Получены данные: ${parsedData.message}`);
+});
+
+// Запуск бота
+bot.launch();
+
+// Запуск сервера
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Сервер запущен на порту ${PORT}`);
 });
