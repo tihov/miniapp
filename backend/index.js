@@ -1,11 +1,16 @@
 const express = require('express');
 const axios = require('axios');
 const app = express();
+const path = require('path');
 
 app.use(express.json());
 
-const BOT_TOKEN = process.env.BOT_TOKEN; // Токен бота из переменных окружения
-const PORT = process.env.PORT || 3000; // Порт для сервера
+app.use(express.static(path.join(__dirname, 'public')));
+
+//const BOT_TOKEN = process.env.BOT_TOKEN; // Токен бота из переменных окружения
+//const PORT = process.env.PORT || 3000; // Порт для сервера
+const BOT_TOKEN = "681895501:AAElZyhHZfXA7VzH4IqdZzRVkKxi_v-SfPw";
+const PORT = 3000;
 
 // Обработчик вебхука от Telegram
 app.post('/webhook', (req, res) => {
