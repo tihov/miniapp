@@ -9,7 +9,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //const BOT_TOKEN = process.env.BOT_TOKEN; // Токен бота из переменных окружения
 //const PORT = process.env.PORT || 3000; // Порт для сервера
-const BOT_TOKEN = "681895501:AAElZyhHZfXA7VzH4IqdZzRVkKxi_v-SfPw";
+const BOT_TOKEN = "123";
 const PORT = 3000;
 
 // Обработчик вебхука от Telegram
