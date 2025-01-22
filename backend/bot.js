@@ -9,7 +9,7 @@ bot.command('start', (ctx) => {
                 [
                     {
                         text: 'Открыть Mini App',
-                        web_app: { url: 'https://miniapp-cyan.vercel.app/index.html' }
+                        web_app: { url: 'https://miniapp-cyan.vercel.app/' }
                     }
                 ]
             ]
@@ -28,7 +28,7 @@ bot.telegram.setChatMenuButton({
     menu_button: {
         type: 'web_app',
         text: 'Открыть Mini App',
-        web_app: { url: 'https://miniapp-cyan.vercel.app//index.html' }
+        web_app: { url: 'https://miniapp-cyan.vercel.app/' }
     }
 });
 
