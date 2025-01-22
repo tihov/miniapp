@@ -9,7 +9,7 @@ bot.command('start', (ctx) => {
                 [
                     {
                         text: 'Открыть Mini App',
-                        web_app: { url: 'https://pc6c2i-109-252-1-93.ru.tuna.am/index.html' }
+                        web_app: { url: 'https://miniapp-cyan.vercel.app/index.html' }
                     }
                 ]
             ]
@@ -28,7 +28,7 @@ bot.telegram.setChatMenuButton({
     menu_button: {
         type: 'web_app',
         text: 'Открыть Mini App',
-        web_app: { url: 'https://pc6c2i-109-252-1-93.ru.tuna.am/index.html' }
+        web_app: { url: 'https://miniapp-cyan.vercel.app//index.html' }
     }
 });
 
