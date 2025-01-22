@@ -5,7 +5,7 @@
   "requires": true,
   "scripts": {
     "start": "node index.js"
-  }
+  },
   "packages": {
     "": {
       "name": "backend",
